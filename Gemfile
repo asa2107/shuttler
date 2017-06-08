@@ -45,5 +45,12 @@ group :development do
   gem 'web-console', '>= 3.3.0'
 end
 
+gem "devise"
+group :development do
+  gem "annotate"
+  gem "better_errors"
+  gem "starter_generators", :git=> 'git://github.com/raghubetina/starter_generators.git'
+end
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
