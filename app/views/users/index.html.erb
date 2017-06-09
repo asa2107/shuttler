@@ -12,7 +12,7 @@
         <th>Last Name</th>
         <th>Gender</th>
         <th>Skill Level</th>
-        <th>Email</th>
+        <th>Message</th>
       </tr>
 
       <% @users.each do |user| %>
@@ -21,7 +21,26 @@
         <td><%= user.last_name %></td>
         <td><%= user.gender %></td>
         <td><%= user.skill_level %></td>
-        <td><%= user.email %></td>
+        <td>
+          <% if user.id != current_user.id %>
+            <% user.messages_as_receiver.each do |message| %>
+              <p><b>You messaged </b><%= message.body %> <i><%= time_ago_in_words(message.created_at) %> ago</i></p>
+            <% end %>
+            <form action ="/create_message">
+                <input type="text" name="body" placeholder="Drop a message..." class="form-control">
+                <input name="sender_id" type="hidden" value="<%= current_user.id %>">
+                <input name="receiver_id" type="hidden" value="<%= user.id %>">
+                <button class="btn btn-md btn-success">
+                  Message
+                </button>
+              </form>
+            <% end %>
+          <% if user.id == current_user.id %>
+            <% user.messages_as_receiver.each do |message| %>
+              <p><b><%= message.sending_user.last_name %> messaged you </b><%= message.body %> <i><%= time_ago_in_words(message.created_at) %> ago</i></p>
+            <% end %>
+          <% end %>
+        </td>
       </tr>
       <% end %>
     </table>

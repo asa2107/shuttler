@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   # Routes for the Message resource:
   # CREATE
   get "/messages/new", :controller => "messages", :action => "new"
-  post "/create_message", :controller => "messages", :action => "create"
+  get "/create_message", :controller => "messages", :action => "create"
 
   # READ
   get "/messages", :controller => "messages", :action => "index"

@@ -35,7 +35,6 @@ class MessagesController < ApplicationController
 
   def edit
     @message = Message.find(params[:id])
-
     render("messages/edit.html.erb")
   end
 
