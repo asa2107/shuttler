@@ -1,7 +1,7 @@
 <div class="page-header">
   <h1>
     Matches
-    <a href="/matches/new" class="btn btn-lg btn-success">New Match</a>
+    <!--<a href="/matches/new" class="btn btn-lg btn-success">New Match</a>-->
   </h1>
 </div>
 
@@ -9,17 +9,27 @@
   <div class="col-md-12">
     <table class="table table-striped table-hover">
       <tr>
+        <th>Match Status</th>
         <th>Playing against</th>
         <th>Opponent Skill level</th>
         <th>Starting time</th>
         <th>Ending time</th>
         <th>Venue</th>
         <th>Actions</th>
+
       </tr>
 
       <% @matches.each do |match| %>
       <tr>
         <% if match.creator_id == current_user.id %>
+            <td>
+              <% if match.state == 0 %>
+                Pending
+              <% end %>
+              <% if match.state == 1 %>
+                Accepted
+              <% end %>
+            </td>
             <td><%= match.accepting_user.last_name %>, <%= match.accepting_user.first_name %></td>
             <td><%= match.accepting_user.skill_level %></td>
             <td><%= match.listing.start_time.strftime('%B %e, %Y at %l:%M%P') %></td>
@@ -30,26 +40,32 @@
               <a href="/delete_match/<%= match.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
             </td>
         <% end %>
+
+        <% if match.acceptor_id == current_user.id %>
+            <td>
+              <% if match.state == 0 %>
+                Pending
+              <% end %>
+              <% if match.state == 1 %>
+                Accepted
+              <% end %>
+            </td>
+            <td><%= match.creating_user.last_name %>, <%= match.creating_user.first_name %></td>
+            <td><%= match.creating_user.skill_level %></td>
+            <td><%= match.listing.start_time.strftime('%B %e, %Y at %l:%M%P') %></td>
+            <td><%= match.listing.end_time.strftime('%B %e, %Y at %l:%M%P') %></td>
+            <td><%= match.listing.location %></td>
+            <td>
+              <a href="/matches/<%= match.id %>" class="btn btn-primary">Show</a>
+              <% if match.state == 0 %>
+                <a href="/update_match/<%= match.id %>" class="btn btn-primary">Accept</a>
+              <% end %>
+              <a href="/delete_match/<%= match.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+            </td>
+        <% end %>
       </tr>
       <% end %>
-    
 
-    <% @matches.each do |match| %>
-    <tr>
-      <% if match.acceptor_id == current_user.id %>
-          <td><%= match.creating_user.last_name %>, <%= match.creating_user.first_name %></td>
-          <td><%= match.creating_user.skill_level %></td>
-          <td><%= match.listing.start_time.strftime('%B %e, %Y at %l:%M%P') %></td>
-          <td><%= match.listing.end_time.strftime('%B %e, %Y at %l:%M%P') %></td>
-          <td><%= match.listing.location %></td>
-          <td>
-            <a href="/matches/<%= match.id %>" class="btn btn-primary">Show</a>
-            <a href="/update_match/<%= match.id %>" class="btn btn-primary">Update</a>
-            <a href="/delete_match/<%= match.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
-          </td>
-      <% end %>
-    </tr>
-    <% end %>
   </table>
   </div>
 </div>

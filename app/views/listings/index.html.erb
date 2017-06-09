@@ -25,12 +25,17 @@
         <td><%= listing.location %></td>
         <td><%= listing.user.last_name %></td>
         <td><%= listing.user.skill_level %></td>
+
+        </td>
         <td><%= time_ago_in_words(listing.created_at) %></td>
-        <%= listing.match.state %>
         <td>
           <a href="/listings/<%= listing.id %>" class="btn btn-primary">Show</a>
           <% if listing.user_id != current_user.id %>
-          <a href="/create_match/<%= listing.user_id %>/<%= listing.id %>" class="btn btn-warning">Request</a>
+            <% listing.matches.each do |match| %>
+                <% if match.requested == 0 %>
+                  <a href="/create_match/<%= listing.user_id %>/<%= listing.id %>" class="btn btn-warning">Request</a>
+                <% end %>
+            <% end %>
           <% end %>
           <% if listing.user_id == current_user.id %>
             <a href="/listings/<%= listing.id %>/edit" class="btn btn-warning">Edit</a>

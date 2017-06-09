@@ -20,8 +20,5 @@ class Listing < ApplicationRecord
             :end_time,
             :location, presence: true
   belongs_to :user
-  belongs_to :match
-
-
-#  has_many :matches, :dependent => :destroy
+  has_many :matches, :dependent => :destroy
 end

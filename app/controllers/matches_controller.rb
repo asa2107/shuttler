@@ -27,9 +27,9 @@ class MatchesController < ApplicationController
     save_status = @match.save
 
     if save_status == true
-      redirect_to("/matches/#{@match.id}", :notice => "Match created successfully.")
+      redirect_to("/matches", :notice => "Match Request created successfully.")
     else
-      render("matches/new.html.erb")
+      redirect_to("/matches", :notice => "Something went wrong!")
     end
   end
 
@@ -45,9 +45,9 @@ class MatchesController < ApplicationController
     save_status = @match.save
 
     if save_status == true
-      redirect_to("/matches/#{@match.id}", :notice => "Match Accepted")
+      redirect_to("/matches", :notice => "Match Accepted")
     else
-      render("matches/edit.html.erb")
+        redirect_to("/matches", :notice => "Something went wrong")
     end
   end
 
