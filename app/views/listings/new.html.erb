@@ -19,41 +19,51 @@
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
       <!-- Label and input for date -->
-      <div class="form-group">
-        <label for="date" class="control-label">
-          Date
-        </label>
-
-        <input type="text" id="date" name="date" placeholder="Date" class="form-control" value="<%= @listing.date %>">
-      </div>
+      <!-- unused column -->
 
       <!-- Label and input for start_time -->
-      <div class="form-group">
+      <div class='input-group date' id='datetimepicker1'>
         <label for="start_time" class="control-label">
-          Start time
+          Start Time
         </label>
-
-        <input type="text" id="start_time" name="start_time" placeholder="Start time" class="form-control" value="<%= @listing.start_time %>">
+        <input type='text' class="form-control" name="start_time" id="start_time">
+        <span class="input-group-addon">
+        <span class="glyphicon glyphicon-calendar"></span>
+        </span>
       </div>
+      <script type="text/javascript">
+        $(function () {
+        $('#datetimepicker1').datetimepicker();
+        });
+      </script>
 
       <!-- Label and input for end_time -->
-      <div class="form-group">
+      <div class='input-group date' id='datetimepicker2'>
         <label for="end_time" class="control-label">
-          End time
+          End Time
         </label>
-
-        <input type="text" id="end_time" name="end_time" placeholder="End time" class="form-control" value="<%= @listing.end_time %>">
+        <input type='text' class="form-control" name="end_time" id="end_time">
+        <span class="input-group-addon">
+        <span class="glyphicon glyphicon-calendar"></span>
+        </span>
       </div>
+      <script type="text/javascript">
+        $(function () {
+        $('#datetimepicker2').datetimepicker();
+        });
+      </script>
 
-      <!-- Label and input for recurring -->
+      <!-- Label and input for recurring
       <div class="checkbox">
         <label for="recurring">
           <input type="checkbox" id="recurring" name="recurring" value="1" <%= "checked" if @listing.recurring %>>
           Recurring
         </label>
       </div>
+      NOT BEING USED  -->
 
-      <!-- Label and input for no_of_weeks -->
+
+      <!-- Label and input for no_of_weeks
       <div class="form-group">
         <label for="no_of_weeks" class="control-label">
           No of weeks
@@ -61,6 +71,7 @@
 
         <input type="text" id="no_of_weeks" name="no_of_weeks" placeholder="No of weeks" class="form-control" value="<%= @listing.no_of_weeks %>">
       </div>
+      NOT BEING USED -->
 
       <!-- Label and input for location -->
       <div class="form-group">
@@ -73,11 +84,11 @@
 
       <!-- Label and input for user_id -->
       <div class="form-group">
-        <label for="user_id" class="control-label">
+      <!--  <label for="user_id" class="control-label">
           User
-        </label>
+        </label> -->
 
-        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @listing.user_id %>">
+        <input type="hidden" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= current_user.id %>">
       </div>
 
       <button class="btn btn-success">

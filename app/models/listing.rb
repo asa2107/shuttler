@@ -15,4 +15,9 @@
 #
 
 class Listing < ApplicationRecord
+  validates :start_time,
+            :end_time,
+            :location, presence: true
+  belongs_to :user
+  has_many :matches, :dependent => :destroy
 end

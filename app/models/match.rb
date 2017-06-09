@@ -11,4 +11,9 @@
 #
 
 class Match < ApplicationRecord
+  validates :creator_id,
+            :acceptor_id,
+            :listing_id, presence: true
+
+  belongs_to :listing
 end

@@ -54,7 +54,10 @@ GEM
       erubis (>= 2.6.6)
       rack (>= 0.9.0)
     bindex (0.5.0)
+    bootstrap3-datetimepicker-rails (4.7.14)
+      momentjs-rails (>= 2.8.1)
     builder (3.2.3)
+    chronic (0.10.2)
     coderay (1.1.1)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -72,6 +75,8 @@ GEM
       warden (~> 1.2.3)
     erubis (2.7.0)
     execjs (2.7.0)
+    font-awesome-sass (4.7.0)
+      sass (>= 3.2)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
     i18n (0.8.4)
@@ -92,6 +97,8 @@ GEM
     mime-types-data (3.2016.0521)
     mini_portile2 (2.2.0)
     minitest (5.10.2)
+    momentjs-rails (2.17.1)
+      railties (>= 3.1)
     multi_json (1.12.1)
     nio4r (2.1.0)
     nokogiri (1.8.0-x86-mingw32)
@@ -171,12 +178,17 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
+  bcrypt
   better_errors
+  bootstrap3-datetimepicker-rails (~> 4.7.14)
   byebug
+  chronic
   coffee-rails (~> 4.2)
   devise
+  font-awesome-sass
   jbuilder (~> 2.5)
   jquery-rails
+  momentjs-rails (>= 2.9.0)
   puma (~> 3.0)
   rails (~> 5.0.3)
   sass-rails (~> 5.0)

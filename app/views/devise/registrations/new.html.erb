@@ -21,6 +21,40 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
+  <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name %>
+  </div>
+
+  <div class="field">
+  <%= f.label :last_name %><br />
+  <%= f.text_field :last_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :gender %></br>
+    <span class="option">Male<span><%= f.radio_button :gender, "M" %></br>
+    <span class="option">Female<span><%= f.radio_button :gender, "F" %></br>
+  </div>
+
+  <div class="field">
+    <%= f.label :skill_level %></br>
+    <span class="option">Beginner<span><%= f.radio_button :skill_level, "Beginner" %></br>
+    <span class="option">Intermediate<span><%= f.radio_button :skill_level, "Intermediate" %></br>
+    <span class="option">Advanced <span><%= f.radio_button :skill_level, "Advanced" %></br>
+  </div>
+
+<!--<div class="field">
+  f.select(:gender, [['Male', 'm'], ['Female', 'f']])
+  <%= f.label :gender %><br />
+  <%= f.text_field :gender %>
+</div>
+
+<div class="field">
+  <%= f.label :skill_level %><br />
+  <%= f.text_field :skill_level %>
+</div> -->
+
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>

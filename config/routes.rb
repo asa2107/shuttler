@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+
   # Routes for the Match resource:
   # CREATE
   get "/matches/new", :controller => "matches", :action => "new"
@@ -52,5 +54,8 @@ Rails.application.routes.draw do
 
   devise_for :users
    root to: "listings#index"
+   get "/users", :controller => "users", :action => "index"
+   get "/users/:id", :controller => "users", :action => "show"
+   get "/my_likes", :controller => "users", :action => "mylikes"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
