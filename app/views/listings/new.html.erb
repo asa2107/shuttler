@@ -22,6 +22,43 @@
       <!-- unused column -->
 
       <!-- Label and input for start_time -->
+      <!--<div class="container">
+    <div class='col-md-5'>
+        <div class="form-group">
+            <div class='input-group date' id='start_time'>
+                <input type='text' class="form-control" />
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class='col-md-5'>
+        <div class="form-group">
+            <div class='input-group date' id='datetimepicker7'>
+                <input type='text' class="form-control" />
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $('#datetimepicker6').datetimepicker();
+        $('#datetimepicker7').datetimepicker({
+            useCurrent: false //Important! See issue #1075
+        });
+        $("#datetimepicker6").on("dp.change", function (e) {
+            $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
+        });
+        $("#datetimepicker7").on("dp.change", function (e) {
+            $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
+        });
+    });
+</script>-->
+
       <div class='input-group date' id='datetimepicker1'>
         <label for="start_time" class="control-label">
           Start Time
@@ -77,9 +114,16 @@
       <div class="form-group">
         <label for="location" class="control-label">
           Location
-        </label>
+        </label><br>
 
-        <input type="text" id="location" name="location" placeholder="Location" class="form-control" value="<%= @listing.location %>">
+        <select name = "location">
+          <option value="Blomquist Recreation Center">Blomquist Recreation Center</option>
+          <option value="Henry Crown Sports Pavillion">Henry Crown Sports Pavillion</option>
+          <option value="Patten Gymnasium">Patten Gymnasium</option>
+        </select>
+        <!--:location, ['Blomquist Recreation Center', 'Henry Crown Sports Pavillion', 'Patten Gymnasium']%>-->
+
+        <!--<input type="text" id="location" name="location" placeholder="Location" class="form-control" value="<%= @listing.location %>">-->
       </div>
 
       <!-- Label and input for user_id -->

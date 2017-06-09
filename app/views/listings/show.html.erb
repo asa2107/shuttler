@@ -5,26 +5,24 @@
 <div class="row">
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
-      <dt>Date</dt>
-      <dd><%= @listing.date %></dd>
 
       <dt>Start time</dt>
-      <dd><%= @listing.start_time %></dd>
+      <dd><%= @listing.start_time.strftime('%B %e, %Y at %l:%M%P') %></dd>
 
       <dt>End time</dt>
-      <dd><%= @listing.end_time %></dd>
-
-      <dt>Recurring</dt>
-      <dd><%= @listing.recurring %></dd>
-
-      <dt>No of weeks</dt>
-      <dd><%= @listing.no_of_weeks %></dd>
+      <dd><%= @listing.end_time.strftime('%B %e, %Y at %l:%M%P') %></dd>
 
       <dt>Location</dt>
       <dd><%= @listing.location %></dd>
 
       <dt>User</dt>
-      <dd><%= @listing.user_id %></dd>
+      <dd><%= @listing.user.last_name %></dd>
+
+      <dt>Skill Level</dt>
+      <dd><%= @listing.user.skill_level %></dd>
+
+      <dt>Posted at</dt>
+      <dd><%= time_ago_in_words(@listing.created_at) %></dd>
 
     </dl>
 
@@ -32,12 +30,17 @@
       <a href="/listings" class="btn btn-primary">
         Back
       </a>
-      <a href="/listings/<%= @listing.id %>/edit" class="btn btn-warning">
-        Edit
-      </a>
-      <a href="/delete_listing/<%= @listing.id %>" class="btn btn-danger" rel="nofollow">
-        Delete
-      </a>
+      <% if @listing.user_id != current_user.id %>
+        <a href="/listings/<%= @listing.id %>/edit" class="btn btn-warning">Request</a>
+      <%end %>
+      <% if @listing.user_id == current_user.id %>
+        <a href="/listings/<%= @listing.id %>/edit" class="btn btn-warning">
+          Edit
+        </a>
+        <a href="/delete_listing/<%= @listing.id %>" class="btn btn-danger" rel="nofollow">
+          Delete
+        </a>
+      <% end %>
     </div>
   </div>
 </div>
