@@ -20,11 +20,8 @@ class ListingsController < ApplicationController
   def create
     @listing = Listing.new
 
-    @listing.date = params[:date]
     @listing.start_time = params[:start_time]
     @listing.end_time = params[:end_time]
-    @listing.recurring = params[:recurring]
-    @listing.no_of_weeks = params[:no_of_weeks]
     @listing.location = params[:location]
     @listing.user_id = params[:user_id]
 
