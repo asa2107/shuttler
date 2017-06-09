@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # Routes for the Match resource:
   # CREATE
   get "/matches/new", :controller => "matches", :action => "new"
-  post "/create_match", :controller => "matches", :action => "create"
+  get "/create_match/:acceptor_id/:listing_id", :controller => "matches", :action => "create"
 
   # READ
   get "/matches", :controller => "matches", :action => "index"

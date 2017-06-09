@@ -5,23 +5,31 @@
 <div class="row">
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
-      <dt>Creator</dt>
-      <dd><%= @match.creator_id %></dd>
+      <dt>Playing against</dt>
+      <dd><%= @match.accepting_user.last_name %></dd>
 
-      <dt>Acceptor</dt>
-      <dd><%= @match.acceptor_id %></dd>
+      <dt>Opponent Skill level</dt>
+      <dd><%= @match.accepting_user.skill_level %></dd>
 
-      <dt>Listing</dt>
-      <dd><%= @match.listing_id %></dd>
+      <dt>Match Timing</dt>
+      <dd>From <%= @match.listing.start_time.strftime('%B %e, %Y at %l:%M%P') %> to <%= @match.listing.start_time.strftime('%B %e, %Y at %l:%M%P') %></dd>
 
+      <dt>Match Venue</dt>
+      <dd><%= @match.listing.location %></dd>
+
+      <dt>Match Status</dt>
+      <dd><% if @match.state == 0 %>
+          Request Pending
+          <% end %>
+          <% if @match.state == 1 %>
+          Request Accepted
+          <% end %>
+      </dd>
     </dl>
 
     <div class="btn-group btn-group-justified">
       <a href="/matches" class="btn btn-primary">
         Back
-      </a>
-      <a href="/matches/<%= @match.id %>/edit" class="btn btn-warning">
-        Edit
       </a>
       <a href="/delete_match/<%= @match.id %>" class="btn btn-danger" rel="nofollow">
         Delete

@@ -13,16 +13,15 @@ class MatchesController < ApplicationController
 
   def new
     @match = Match.new
-
     render("matches/new.html.erb")
   end
 
   def create
     @match = Match.new
-
-    @match.creator_id = params[:creator_id]
+    @match.creator_id = current_user.id
     @match.acceptor_id = params[:acceptor_id]
     @match.listing_id = params[:listing_id]
+    @match.state = 0
 
     save_status = @match.save
 

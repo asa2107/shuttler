@@ -8,6 +8,8 @@
 #  listing_id  :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  status      :boolean
+#  state       :integer
 #
 
 class Match < ApplicationRecord
@@ -16,4 +18,6 @@ class Match < ApplicationRecord
             :listing_id, presence: true
 
   belongs_to :listing
+  belongs_to :creating_user, :class_name => "User", :foreign_key => "creator_id"
+  belongs_to :accepting_user, :class_name => "User", :foreign_key => "acceptor_id"
 end
