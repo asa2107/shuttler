@@ -12,6 +12,7 @@
 #  user_id     :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  match_id    :integer
 #
 
 class Listing < ApplicationRecord
@@ -19,5 +20,8 @@ class Listing < ApplicationRecord
             :end_time,
             :location, presence: true
   belongs_to :user
-  has_many :matches, :dependent => :destroy
+  belongs_to :match
+
+
+#  has_many :matches, :dependent => :destroy
 end

@@ -10,6 +10,7 @@
 #  updated_at  :datetime         not null
 #  status      :boolean
 #  state       :integer
+#  requested   :integer
 #
 
 class Match < ApplicationRecord

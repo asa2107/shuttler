@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170609053800) do
+ActiveRecord::Schema.define(version: 20170609061120) do
 
   create_table "listings", force: :cascade do |t|
     t.datetime "date"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20170609053800) do
     t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "match_id"
   end
 
   create_table "matches", force: :cascade do |t|
@@ -32,6 +33,7 @@ ActiveRecord::Schema.define(version: 20170609053800) do
     t.datetime "updated_at",  null: false
     t.boolean  "status"
     t.integer  "state"
+    t.integer  "requested"
   end
 
   create_table "messages", force: :cascade do |t|

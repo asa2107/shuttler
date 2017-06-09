@@ -22,6 +22,7 @@ class MatchesController < ApplicationController
     @match.acceptor_id = params[:acceptor_id]
     @match.listing_id = params[:listing_id]
     @match.state = 0
+    @match.requested = 1
 
     save_status = @match.save
 
