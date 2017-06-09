@@ -29,7 +29,7 @@ Rails.application.routes.draw do
 
   # UPDATE
   get "/messages/:id/edit", :controller => "messages", :action => "edit"
-  post "/update_message/:id", :controller => "messages", :action => "update"
+  get "/update_message/:id", :controller => "messages", :action => "update"
 
   # DELETE
   get "/delete_message/:id", :controller => "messages", :action => "destroy"
