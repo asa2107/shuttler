@@ -27,7 +27,7 @@
         <td><%= listing.user.skill_level %></td>
 
         </td>
-        <td><%= time_ago_in_words(listing.created_at) %></td>
+        <td><%= time_ago_in_words(listing.created_at) %> ago</td>
         <td>
           <a href="/listings/<%= listing.id %>" class="btn btn-primary">Show</a>
           <% if listing.user_id != current_user.id %>

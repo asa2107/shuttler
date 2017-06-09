@@ -24,7 +24,9 @@
         <td>
           <% if user.id != current_user.id %>
             <% user.messages_as_receiver.each do |message| %>
+              <% if message.sender_id == current_user.id %>
               <p><b>You messaged </b><%= message.body %> <i><%= time_ago_in_words(message.created_at) %> ago</i></p>
+              <% end %>
             <% end %>
             <form action ="/create_message">
                 <input type="text" name="body" placeholder="Drop a message..." class="form-control">
@@ -44,5 +46,13 @@
       </tr>
       <% end %>
     </table>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/messages" class="btn btn-primary">
+        Go to My Messages
+      </a>
+    </div>
+
+
   </div>
 </div>

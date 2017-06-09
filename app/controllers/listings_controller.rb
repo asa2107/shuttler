@@ -1,13 +1,11 @@
 class ListingsController < ApplicationController
   def index
     @listings = Listing.all
-
     render("listings/index.html.erb")
   end
 
   def show
     @listing = Listing.find(params[:id])
-
     render("listings/show.html.erb")
   end
 

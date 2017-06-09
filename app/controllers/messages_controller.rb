@@ -27,9 +27,9 @@ class MessagesController < ApplicationController
     save_status = @message.save
 
     if save_status == true
-      redirect_to("/messages/#{@message.id}", :notice => "Message created successfully.")
+      redirect_to("/users", :notice => "Message created successfully.")
     else
-      render("messages/new.html.erb")
+      render("messages/new.html.erb", :notice => "Something went wrong!")
     end
   end
 
