@@ -30,7 +30,6 @@
           <a href="/listings/<%= listing.id %>" class="btn btn-primary">Show</a>
           <% if listing.user_id != current_user.id %>
           <a href="/create_match/<%= listing.user_id %>/<%= listing.id %>" class="btn btn-warning">Request</a>
-          <%= listing.match.id %>
           <% end %>
           <% if listing.user_id == current_user.id %>
             <a href="/listings/<%= listing.id %>/edit" class="btn btn-warning">Edit</a>
