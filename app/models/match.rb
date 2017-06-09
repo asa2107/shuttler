@@ -17,6 +17,7 @@ class Match < ApplicationRecord
   validates :creator_id,
             :acceptor_id,
             :listing_id, presence: true
+  validates :listing_id, :uniqueness => {:scope=>:creator_id, :message=>"Match already requested"}
 
   belongs_to :listing
   belongs_to :creating_user, :class_name => "User", :foreign_key => "creator_id"

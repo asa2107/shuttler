@@ -29,7 +29,7 @@ class MatchesController < ApplicationController
     if save_status == true
       redirect_to("/matches", :notice => "Match Request created successfully.")
     else
-      redirect_to("/matches", :notice => "Something went wrong!")
+      redirect_to("/listings", :notice => "You have already requested a match for this listing.")
     end
   end
 
