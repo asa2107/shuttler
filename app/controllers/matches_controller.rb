@@ -41,15 +41,11 @@ class MatchesController < ApplicationController
 
   def update
     @match = Match.find(params[:id])
-
-    @match.creator_id = params[:creator_id]
-    @match.acceptor_id = params[:acceptor_id]
-    @match.listing_id = params[:listing_id]
-
+    @match.state = 1
     save_status = @match.save
 
     if save_status == true
-      redirect_to("/matches/#{@match.id}", :notice => "Match updated successfully.")
+      redirect_to("/matches/#{@match.id}", :notice => "Match Accepted")
     else
       render("matches/edit.html.erb")
     end

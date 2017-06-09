@@ -20,19 +20,36 @@
       <% @matches.each do |match| %>
       <tr>
         <% if match.creator_id == current_user.id %>
-          <td><%= match.accepting_user.last_name %>, <%= match.accepting_user.first_name %></td>
-          <td><%= match.accepting_user.skill_level %></td>
+            <td><%= match.accepting_user.last_name %>, <%= match.accepting_user.first_name %></td>
+            <td><%= match.accepting_user.skill_level %></td>
+            <td><%= match.listing.start_time.strftime('%B %e, %Y at %l:%M%P') %></td>
+            <td><%= match.listing.end_time.strftime('%B %e, %Y at %l:%M%P') %></td>
+            <td><%= match.listing.location %></td>
+            <td>
+              <a href="/matches/<%= match.id %>" class="btn btn-primary">Show</a>
+              <a href="/delete_match/<%= match.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+            </td>
+        <% end %>
+      </tr>
+      <% end %>
+    
+
+    <% @matches.each do |match| %>
+    <tr>
+      <% if match.acceptor_id == current_user.id %>
+          <td><%= match.creating_user.last_name %>, <%= match.creating_user.first_name %></td>
+          <td><%= match.creating_user.skill_level %></td>
           <td><%= match.listing.start_time.strftime('%B %e, %Y at %l:%M%P') %></td>
           <td><%= match.listing.end_time.strftime('%B %e, %Y at %l:%M%P') %></td>
           <td><%= match.listing.location %></td>
           <td>
             <a href="/matches/<%= match.id %>" class="btn btn-primary">Show</a>
-            <a href="/matches/<%= match.id %>/edit" class="btn btn-warning">Edit</a>
+            <a href="/update_match/<%= match.id %>" class="btn btn-primary">Update</a>
             <a href="/delete_match/<%= match.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
           </td>
-          <% end %>
-        </tr>
-        <% end %>
-    </table>
+      <% end %>
+    </tr>
+    <% end %>
+  </table>
   </div>
 </div>

@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   # UPDATE
   get "/matches/:id/edit", :controller => "matches", :action => "edit"
-  post "/update_match/:id", :controller => "matches", :action => "update"
+  get "/update_match/:id", :controller => "matches", :action => "update"
 
   # DELETE
   get "/delete_match/:id", :controller => "matches", :action => "destroy"
